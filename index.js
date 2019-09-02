@@ -1,6 +1,7 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const usersApiRouter = require("./routes/api/users")
+const authApiRouter = require("./routes/api/auth")
 
 // App
 const app = express()
@@ -10,6 +11,7 @@ app.use(bodyParser.json())
 
 // Routes
 app.use("/api/users", usersApiRouter)
+app.use("/api/auth", authApiRouter)
 
 // Default Routes / Redirects
 app.get("/", (req, res, next) => {
