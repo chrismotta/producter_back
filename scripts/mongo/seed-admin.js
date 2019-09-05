@@ -7,7 +7,8 @@ function buildAdminUser(password) {
   return {
     password,
     username: config.authAdminUsername,
-    email: config.authAdminEmail
+    email: config.authAdminEmail,
+    role: "admin"
   };
 }
 

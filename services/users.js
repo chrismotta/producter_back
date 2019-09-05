@@ -1,4 +1,3 @@
-const usersMocks = require("../utils/mocks/users")
 const MongoLib = require("../lib/mongo")
 
 class UsersService {

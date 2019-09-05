@@ -2,9 +2,17 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const usersApiRouter = require("./routes/api/users")
 const authApiRouter = require("./routes/api/auth")
+const cors = require("cors")
 
 // App
 const app = express()
+
+// Cors
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+}
+app.use(cors(corsOptions));
 
 // Middlewares
 app.use(bodyParser.json())
