@@ -7,8 +7,8 @@ class UsersService {
     }
 
     async getUsers({ role }){
-        const query = role && { role: { $in: role } }
-        const users = await this.mongoDB.getAll(this.collection, query)
+        const filters = role && { role: { $in: role } }
+        const users = await this.mongoDB.getAll(this.collection, filters)
         return users || []
     }
 

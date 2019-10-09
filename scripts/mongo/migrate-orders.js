@@ -32,11 +32,35 @@ async function migrateOrders(mongoDB, mysql, step, stepSize) {
                     email: row.EMAIL,
                     entryDate: getIsoDate(row.FechaIng),
                     deliveryDate: getIsoDate(row.FechaEst),
-                    caracteristics: [row.Caracteristicas],
-                    description: [row.Descripcion],
+                    caracteristics: [
+                        {
+                            text: row.Caracteristicas,
+                            user: "Admin",
+                            date: getIsoDate(row.FechaIng)
+                        }
+                    ],
+                    description: [
+                        {
+                            text: row.Descripcion,
+                            user: "Admin",
+                            date: getIsoDate(row.FechaIng)
+                        }
+                    ],
                     commentsList: row.comboComent,
-                    comments: [row.Comentario],
-                    fabric: row.estructura_tipo,
+                    comments: [
+                        {
+                            text: row.Comentario,
+                            user: "Admin",
+                            date: getIsoDate(row.FechaIng)
+                        }
+                    ],
+                    fabric: [
+                        {
+                            text: row.estructura_tipo,
+                            user: "Admin",
+                            date: getIsoDate(row.FechaIng)
+                        }
+                    ],
                     status: row.Estado,
                     dataStatus: row.datosInc,
                     deliveryType: row.mentrega,
@@ -60,7 +84,7 @@ async function migrateOrders(mongoDB, mysql, step, stepSize) {
 
 function getIsoDate(date){
     date = date.split("/")
-    date = new Date(date[2], date[1]-1, date[0])
+    date = new Date(date[2], date[1]-1, date[0], -3, 0, 0)
     return date 
 }
 

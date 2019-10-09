@@ -1,6 +1,7 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const usersApiRouter = require("./routes/api/users")
+const ordersApiRouter = require("./routes/api/orders")
 const authApiRouter = require("./routes/api/auth")
 const cors = require("cors")
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json())
 
 // Routes
 app.use("/api/users", usersApiRouter)
+app.use("/api/orders", ordersApiRouter)
 app.use("/api/auth", authApiRouter)
 
 // Default Routes / Redirects
